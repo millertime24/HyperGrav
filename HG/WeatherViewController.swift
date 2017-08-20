@@ -67,7 +67,6 @@ class WeatherViewController: UIViewController, UISearchBarDelegate {
                     if let temperatureC = weatherResult.temperatureC {
                         self.temperatureLabel.text = String(temperatureC) + " °C"
                     } else {
-                        UIApplication.shared.isNetworkActivityIndicatorVisible = true
                         self.temperatureLabel.text = "No temperature available"
                     }
                     self.mainLabel.text = weatherResult.main
