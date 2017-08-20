@@ -1117,7 +1117,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lo9-82-ttJ" userLabel="Fluids Label">
-                                                    <rect key="frame" x="254" y="0.0" width="48" height="44"/>
+                                                    <rect key="frame" x="309" y="0.0" width="48" height="44"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="22"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -1804,6 +1804,9 @@
                                     <action selector="cancel:" destination="8wx-vF-BNr" eventType="touchUpInside" id="Xf0-Fe-5DY"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="YPC-Hq-yh4">
+                                <rect key="frame" x="310" y="63" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -1820,9 +1823,11 @@
                             <constraint firstItem="rRl-ZG-hyT" firstAttribute="top" secondItem="VZS-qk-N2r" secondAttribute="bottom" constant="7.5" id="bcs-lR-oRP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rRl-ZG-hyT" secondAttribute="trailing" id="cBW-yF-Lkl"/>
                             <constraint firstItem="VZS-qk-N2r" firstAttribute="centerX" secondItem="cU7-Oa-0Fq" secondAttribute="centerX" id="epU-yO-hO6"/>
+                            <constraint firstItem="FKF-i0-ZCo" firstAttribute="top" secondItem="YPC-Hq-yh4" secondAttribute="bottom" constant="21" id="iyx-ui-3xf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0Ll-Rg-DXW" secondAttribute="trailing" id="jYs-Aq-GhA"/>
                             <constraint firstAttribute="leadingMargin" secondItem="cGx-PQ-6hi" secondAttribute="leading" id="jkz-Bd-9wy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="FKF-i0-ZCo" secondAttribute="trailing" id="m5D-3R-2XX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YPC-Hq-yh4" secondAttribute="trailing" constant="29" id="mtf-7N-pF4"/>
                             <constraint firstItem="bGh-Bn-s3K" firstAttribute="leading" secondItem="cU7-Oa-0Fq" secondAttribute="leading" id="qKJ-4n-hNe"/>
                             <constraint firstAttribute="trailing" secondItem="bGh-Bn-s3K" secondAttribute="trailing" id="rcX-8W-OAw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="cGx-PQ-6hi" secondAttribute="trailing" id="urO-QG-3gK"/>
@@ -1830,6 +1835,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="dX8-Wn-vs5"/>
                     <connections>
+                        <outlet property="activity" destination="YPC-Hq-yh4" id="WVx-ky-wdV"/>
                         <outlet property="cityNameLabel" destination="FKF-i0-ZCo" id="BN5-OT-GdO"/>
                         <outlet property="descriptionLabel" destination="cGx-PQ-6hi" id="Ozd-ZB-5dr"/>
                         <outlet property="iconImageView" destination="VZS-qk-N2r" id="8uk-2w-jny"/>
