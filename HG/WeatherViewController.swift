@@ -43,18 +43,18 @@ class WeatherViewController: UIViewController, UISearchBarDelegate {
         
     }
     
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let searchText = searchBar.text {
             activity.startAnimating()
             activity.isHidden = false
             WeatherController.weatherBySearchCity(searchText) { (result) in
                 guard let weatherResult = result else {
+                 //   self.activity.stopAnimating()
+                 //   self.activity.isHidden = true
                     let controller = UIAlertController(title: "No Internet Detected", message: "Connection Failure", preferredStyle: .alert)
                     let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
                     let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-                    self.activity.stopAnimating()
-                    self.activity.isHidden = true
+                    
                     controller.addAction(ok)
                     controller.addAction(cancel)
                     
@@ -65,6 +65,8 @@ class WeatherViewController: UIViewController, UISearchBarDelegate {
                 DispatchQueue.main.async { () in
                     self.cityNameLabel.text = weatherResult.cityName
                     if let temperatureC = weatherResult.temperatureC {
+                        self.activity.stopAnimating()
+                        self.activity.isHidden = true
                         self.temperatureLabel.text = String(temperatureC) + " °C"
                     } else {
                         self.temperatureLabel.text = "No temperature available"

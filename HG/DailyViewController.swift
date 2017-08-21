@@ -12,7 +12,7 @@ import CoreData
 
 class DailyViewController: UIViewController, BEMCheckBoxDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
-     var numbers = ["1", "2", "3", "4", "5", "6", "7", "8","9","10","11","12","13","14","15","16","17","18","19","20+"]
+     var numbers = ["0","1", "2", "3", "4", "5", "6", "7", "8","9","10","11","12","13","14","15","16","17","18","19","20+"]
     
     var days: [Day] = []
     
@@ -75,16 +75,16 @@ class DailyViewController: UIViewController, BEMCheckBoxDelegate, UIPickerViewDe
     }
     // Capture the picker view selection
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        // title is equal to index
+       thisDay.emesis = Int64(row)
+        // save to core data
+        let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            try managedContext.save() }
+        catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
         
-        // This method is triggered whenever the user makes a change to the picker selection.
-        // The parameter named row and component represents what was selected.
-        
-        //this will give you the number that user has selected
-        //numbers array -> row -> title
-        // store this number in a variable
-        
-        //emesis = numbers array -> row -> title
-        //1 2 3 4
     }
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let str = numbers[row]
@@ -175,8 +175,8 @@ class DailyViewController: UIViewController, BEMCheckBoxDelegate, UIPickerViewDe
                 thisDay = NSManagedObject(entity: entity, insertInto: managedContext) as! Day
                 thisDay.setValue(true, forKey: "notEntered")
                 thisDay.setValue(selectedDate, forKeyPath: "date")
-                // thisDay.emesis = emesis
-                
+                // set value to 0
+                thisDay.emesis = 0
                 do {
                     try managedContext.save()
                 } catch let error as NSError {
@@ -192,6 +192,8 @@ class DailyViewController: UIViewController, BEMCheckBoxDelegate, UIPickerViewDe
                 if thisDay.bowel == true {
                     box.setOn(true, animated: true)
                 }
+                // set the correct pickervalue based on the value from core data
+                picker.selectRow(Int(thisDay.emesis), inComponent:0, animated: true)
                 
             }
         } catch let error as NSError {
