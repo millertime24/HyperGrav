@@ -18,16 +18,24 @@ class WeatherViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var activity: UIActivityIndicatorView!
     
+    // Bool to indicate whether or not we need to save the location
+    var shouldSaveLocation = false
+    
+    
     @IBAction func cancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
-    
-    override func viewDidAppear(_ animated: Bool) {
+   
+    override func viewWillAppear(_ animated: Bool) {
         activity.isHidden = true
         if Reachability.isConnectedToNetwork() == true
         {
             print("Connected")
+            // Now check if you have a previous location
+            if let location = UserDefaults.standard.value(forKey: "location") as? String {
+                getWheatherFor(location: location)
+            }
         }
         else
         {
@@ -45,44 +53,58 @@ class WeatherViewController: UIViewController, UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let searchText = searchBar.text {
-            activity.startAnimating()
-            activity.isHidden = false
-            WeatherController.weatherBySearchCity(searchText) { (result) in
-                guard let weatherResult = result else {
-                 //   self.activity.stopAnimating()
-                 //   self.activity.isHidden = true
-                    let controller = UIAlertController(title: "No Internet Detected", message: "Connection Failure", preferredStyle: .alert)
-                    let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
-                    let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-                    
-                    controller.addAction(ok)
-                    controller.addAction(cancel)
-                    
-                    self.present(controller, animated: true, completion: nil)
-                    return
-                }
-            
-                DispatchQueue.main.async { () in
-                    self.cityNameLabel.text = weatherResult.cityName
-                    if let temperatureC = weatherResult.temperatureC {
-                        self.activity.stopAnimating()
-                        self.activity.isHidden = true
-                        self.temperatureLabel.text = String(temperatureC) + " °C"
-                    } else {
-                        self.temperatureLabel.text = "No temperature available"
-                    }
-                    self.mainLabel.text = weatherResult.main
-                    self.descriptionLabel.text = weatherResult.description
-                }
-                
-                WeatherController.weatherIconForIconCode(weatherResult.iconString, completion: { (image) -> Void in
-                    DispatchQueue.main.async(execute: { () -> Void in
-                        self.iconImageView.image = image
-                    })
-                })
-            }
+            shouldSaveLocation = true
+            getWheatherFor(location: searchText)
         }
         
         searchBar.resignFirstResponder()
+    }
+    
+    func getWheatherFor(location: String) {
+        activity.startAnimating()
+        activity.isHidden = false
+        WeatherController.weatherBySearchCity(location) { (result) in
+            // always stop/hide activity
+            DispatchQueue.main.async {
+                self.activity.stopAnimating()
+                self.activity.isHidden = true
+            }
+            
+            guard let weatherResult = result else {
+                let controller = UIAlertController(title: "No Internet Detected", message: "Connection Failure", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+                let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                
+                controller.addAction(ok)
+                controller.addAction(cancel)
+                
+                self.present(controller, animated: true, completion: nil)
+                return
+            }
+            
+            // check if need to save this location
+            if self.shouldSaveLocation {
+                UserDefaults.standard.set(location, forKey: "location")
+            }
+            
+            DispatchQueue.main.async { () in
+                self.cityNameLabel.text = weatherResult.cityName
+                if let temperatureC = weatherResult.temperatureC {
+             
+                    self.temperatureLabel.text = String(temperatureC) + " °C"
+                } else {
+                    self.temperatureLabel.text = "No temperature available"
+                }
+                self.mainLabel.text = weatherResult.main
+                self.descriptionLabel.text = weatherResult.description
+            }
+            
+            WeatherController.weatherIconForIconCode(weatherResult.iconString, completion: { (image) -> Void in
+                DispatchQueue.main.async(execute: { () -> Void in
+                    self.iconImageView.image = image
+                })
+            })
+        }
+        
     }
 }
