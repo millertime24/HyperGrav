@@ -26,9 +26,6 @@ Features
 **Calendar**
 * Records daily weight, notes, bowel movements, emesis count and sleep tracker
 
-**Weather**
-* Can find daily weather to help with this condition
-
 **Reminders**
 * Shows reminders 
 

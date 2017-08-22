@@ -29,6 +29,7 @@ class CalendarViewController: UIViewController {
     let formatter = DateFormatter()
     
     var selectedDate: Date!
+    var selectingCurrentDate = false
     
     
     
@@ -47,7 +48,8 @@ class CalendarViewController: UIViewController {
         // Scroll to the current month
         calendarView.scrollToDate(Date())
         // This will select the current date
-        //calendarView.selectDates(from: Date(), to: Date())
+        calendarView.selectDates(from: Date(), to: Date())
+        selectingCurrentDate = true
         
     }
     
@@ -151,12 +153,16 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate: Date, cell: JTAppleCell?, cellState: CellState) {
-        print(didSelectDate)
+        debugPrint("selected a date in the calendar", didSelectDate)
+        if !selectingCurrentDate {
         selectedDate = didSelectDate
         handleCellSelected(view: cell, cellState: cellState)
         handleCellTextColor(view: cell, cellState: cellState)
         
         performSegue(withIdentifier: "showDay", sender: self)
+        } else {
+            selectingCurrentDate = false
+        }
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {

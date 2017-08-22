@@ -53,11 +53,6 @@
 		CEBED0E31F141F5E005019F2 /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED0DF1F141F5E005019F2 /* CounterView.swift */; };
 		CEBED0E41F141F5E005019F2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED0E01F141F5E005019F2 /* HomeViewController.swift */; };
 		CEBED0E51F141F5E005019F2 /* DaysLeftModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED0E11F141F5E005019F2 /* DaysLeftModel.swift */; };
-		CEDC7DCD1F476E9900CDE064 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC7DCC1F476E9900CDE064 /* Reachability.swift */; };
-		CEDC7DCF1F476EBE00CDE064 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC7DCE1F476EBE00CDE064 /* NetworkController.swift */; };
-		CEDC7DD11F476EDE00CDE064 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC7DD01F476EDE00CDE064 /* Weather.swift */; };
-		CEDC7DD31F476F0200CDE064 /* WeatherController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC7DD21F476F0200CDE064 /* WeatherController.swift */; };
-		CEDC7DD51F476F2300CDE064 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC7DD41F476F2300CDE064 /* WeatherViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -117,11 +112,6 @@
 		CEBED0DF1F141F5E005019F2 /* CounterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
 		CEBED0E01F141F5E005019F2 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CEBED0E11F141F5E005019F2 /* DaysLeftModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaysLeftModel.swift; sourceTree = "<group>"; };
-		CEDC7DCC1F476E9900CDE064 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
-		CEDC7DCE1F476EBE00CDE064 /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
-		CEDC7DD01F476EDE00CDE064 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
-		CEDC7DD21F476F0200CDE064 /* WeatherController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherController.swift; sourceTree = "<group>"; };
-		CEDC7DD41F476F2300CDE064 /* WeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,7 +268,6 @@
 				CE163F4B1F143A370020FDAB /* Fluid */,
 				CE163F4A1F1437EF0020FDAB /* Reminder */,
 				CEBED0C81F141E11005019F2 /* AppDelegate.swift */,
-				CEDC7DCB1F476E6000CDE064 /* Weather */,
 				CE163F331F1424290020FDAB /* Calendar */,
 				CEBED0DD1F141F2F005019F2 /* Home */,
 				CEBED0CC1F141E11005019F2 /* Main.storyboard */,
@@ -302,18 +291,6 @@
 				CEBED0E11F141F5E005019F2 /* DaysLeftModel.swift */,
 			);
 			name = Home;
-			sourceTree = "<group>";
-		};
-		CEDC7DCB1F476E6000CDE064 /* Weather */ = {
-			isa = PBXGroup;
-			children = (
-				CEDC7DCC1F476E9900CDE064 /* Reachability.swift */,
-				CEDC7DCE1F476EBE00CDE064 /* NetworkController.swift */,
-				CEDC7DD01F476EDE00CDE064 /* Weather.swift */,
-				CEDC7DD21F476F0200CDE064 /* WeatherController.swift */,
-				CEDC7DD41F476F2300CDE064 /* WeatherViewController.swift */,
-			);
-			name = Weather;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -472,7 +449,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE163F3D1F142B0A0020FDAB /* WeightViewController.swift in Sources */,
-				CEDC7DD51F476F2300CDE064 /* WeatherViewController.swift in Sources */,
 				CE163F4D1F143A540020FDAB /* FluidViewController.swift in Sources */,
 				CE6BD6801F191629007D0C1C /* ReminderTableViewController.swift in Sources */,
 				CEBED0E41F141F5E005019F2 /* HomeViewController.swift in Sources */,
@@ -480,13 +456,11 @@
 				CE163F651F143CF30020FDAB /* AddSubtractViewController.swift in Sources */,
 				CEADB9881F1D76A600F07067 /* BEMCheckBoxGroup.m in Sources */,
 				CEADB9891F1D76A600F07067 /* BEMPathManager.m in Sources */,
-				CEDC7DCD1F476E9900CDE064 /* Reachability.swift in Sources */,
 				CE163F431F142E920020FDAB /* DailyViewController.swift in Sources */,
 				CE44E9D61F428E4D00319708 /* SleepViewController.swift in Sources */,
 				CE6BD6861F191686007D0C1C /* ReminderList.swift in Sources */,
 				CE163F631F143CF30020FDAB /* UnitViewController.swift in Sources */,
 				CE163F411F142B9D0020FDAB /* CustomCell.swift in Sources */,
-				CEDC7DD31F476F0200CDE064 /* WeatherController.swift in Sources */,
 				CE6BD6841F19167A007D0C1C /* ReminderItem.swift in Sources */,
 				CEBED0C91F141E11005019F2 /* AppDelegate.swift in Sources */,
 				CE163F821F14411F0020FDAB /* MoreViewController.swift in Sources */,
@@ -496,8 +470,6 @@
 				CE6BD6821F191658007D0C1C /* ReminderSchedulingViewController.swift in Sources */,
 				CE163F391F142A0F0020FDAB /* CalendarViewController.swift in Sources */,
 				CE163F641F143CF30020FDAB /* CircularProgressBar.swift in Sources */,
-				CEDC7DCF1F476EBE00CDE064 /* NetworkController.swift in Sources */,
-				CEDC7DD11F476EDE00CDE064 /* Weather.swift in Sources */,
 				CEBED0E31F141F5E005019F2 /* CounterView.swift in Sources */,
 				CE163F661F143CF30020FDAB /* HistoryCell.swift in Sources */,
 				CEADB9871F1D76A600F07067 /* BEMCheckBox.m in Sources */,
