@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 
-class NotesViewController: UIViewController {
+class NotesViewController: UIViewController{
     
     var selectedDay: Day!
 
@@ -37,7 +37,7 @@ class NotesViewController: UIViewController {
         
     }
     
-    
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,5 +48,7 @@ class NotesViewController: UIViewController {
       
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
     }
+    
+  
     
 }
